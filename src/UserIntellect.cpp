@@ -1,10 +1,23 @@
 #include "../include/UserIntellect.h"
 #include "../include/InputController.h"
+#include "../include/ComputerIntellect.h"
 #include "../include/PresentationController.h"
 
 UserIntellect::UserIntellect() {
     user_map_for_user.resize(12, vector<int>(12, 0));
     computer_map_for_user.resize(12, vector<int>(12, 0));
+}
+
+void UserIntellect::make_turn(vector<vector<int>> &map1, vector<vector<int>> &map) {
+    InputController inputController;
+    ComputerIntellect computerIntellect;
+    pair<int, int> cur_coords = inputController.get_coordinates();
+    int ans = computerIntellect.answer(cur_coords, map);
+    if(ans == 0) map1[cur_coords.second][cur_coords.first] = 1;
+    else if(ans == 1) map1[cur_coords.second][cur_coords.first] = 2;
+    else {
+        kill_ship(cur_coords, map1);
+    }
 }
 
 void UserIntellect::initialize(vector< vector<int> > &map){

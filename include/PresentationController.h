@@ -10,6 +10,7 @@ class PresentationController {
 public:
     int enters, spaces;
     void print(const vector< vector<int> > &map, const vector< vector<int> > &map1);
+    void shoot(int n);
     void ship_declaration_for_user(int size, int num, bool start_or_end);
     bool start_of_the_game(string str);
     PresentationController(int ent, int spac);

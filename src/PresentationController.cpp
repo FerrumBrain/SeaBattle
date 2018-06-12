@@ -41,6 +41,12 @@ void PresentationController::ship_declaration_for_user(int size, int num, bool s
     cout << numbers[3 - size] << "-deck ship." << endl;
 }
 
+void PresentationController::shoot(int n){
+   if(n == 0) cout << "Pass" << endl;
+   if(n == 1) cout << "Injured";
+   if(n == 2) cout << "Killed";
+}
+
 bool PresentationController::start_of_the_game(string str) {
     string ans, ans_copy;
     cout << str << endl;

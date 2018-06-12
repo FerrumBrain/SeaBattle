@@ -12,7 +12,8 @@ int main() {
     UserIntellect userIntellect;
     ComputerIntellect computerIntellect;
     PresentationController presentationController(30, 10);
-    if(!presentationController.start_of_the_game("Do you want to get a random map or not?")){
+    computerIntellect.initialize(computerIntellect.computer_map_for_comp);
+    if(!presentationController.start_of_the_game("Do you want to get a random map?")){
         userIntellect.initialize(userIntellect.user_map_for_user);
         computerIntellect.initialize(computerIntellect.computer_map_for_comp);
         presentationController.print(userIntellect.user_map_for_user, computerIntellect.computer_map_for_comp);
@@ -27,5 +28,9 @@ int main() {
             counter++;
         } while(!presentationController.start_of_the_game("This one?"));
     }
+
+    //userIntellect.make_turn(userIntellect.computer_map_for_user, computerIntellect.computer_map_for_comp);
+    //presentationController.print(userIntellect.computer_map_for_user, computerIntellect.computer_map_for_comp);
+
     return 0;
 }

@@ -56,6 +56,17 @@ bool InputController::is_coordinates_ok(char letter, int digit) {
     return letter >= 'A' && letter <= 'J' && digit > 0 && digit <= 10;
 }
 
+pair<int, int> InputController::get_coordinates(){
+    int counter = 0, digit;
+    char letter;
+    do {
+        if (counter >= 1) cout << "It is wrong coordinates. Try again." << endl;
+        cin >> letter >> digit;
+        counter++;
+    } while(!is_coordinates_ok(letter, digit));
+    return make_pair(letter - 'A' + 1, digit);
+}
+
 void InputController::start(pair<int, int> &cur_coordinate, pair<int, int> &last_coordinate, const vector<vector<int> > &map, int size, int num, pair <int, pair <int, int> > &value_from_dist) {
     PresentationController presentationController(0, 10);
     bool flag;
