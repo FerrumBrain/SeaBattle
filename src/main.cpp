@@ -29,8 +29,9 @@ int main() {
         } while(!presentationController.start_of_the_game("This one?"));
     }
 
-    //userIntellect.make_turn(userIntellect.computer_map_for_user, computerIntellect.computer_map_for_comp);
-    //presentationController.print(userIntellect.computer_map_for_user, computerIntellect.computer_map_for_comp);
 
+    userIntellect.make_turn(userIntellect.computer_map_for_user, computerIntellect.computer_map_for_comp, 0);
+    computerIntellect.make_turn(computerIntellect.user_map_for_comp, userIntellect.user_map_for_user, 4);
+    presentationController.print(userIntellect.user_map_for_user, computerIntellect.computer_map_for_comp);
     return 0;
 }

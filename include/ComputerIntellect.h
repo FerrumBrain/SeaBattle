@@ -7,9 +7,8 @@ class ComputerIntellect: Intellect {
 public:
     vector< vector<int> > user_map_for_comp, computer_map_for_comp;
     void initialize(vector< vector<int> > &map);
-    void make_turn(vector<vector<int>> &map1, vector<vector<int>> &map){
-        return;
-    };
+    int make_turn(vector<vector<int>> &map1, vector<vector<int>> &map, int size);
+    pair<int, int> generate_shoot_coordinates(vector<vector<int>> &map, int _size);
     ComputerIntellect();
     int answer(pair<int, int> coords, vector<vector<int>> &map);
 

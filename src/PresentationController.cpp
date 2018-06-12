@@ -11,6 +11,10 @@ void PresentationController::clear() {
     }
 }
 
+void PresentationController::comp_shoot(pair<int, int> coords) {
+    cout << "He shot to the " << (char)(coords.first + 'A' - 1) << coords.second << endl;
+}
+
 char PresentationController::symbol(int n) {
     if(n == 0 || n == 5)
         return '~';   //Empty and I can shoot there.
@@ -42,9 +46,10 @@ void PresentationController::ship_declaration_for_user(int size, int num, bool s
 }
 
 void PresentationController::shoot(int n){
-   if(n == 0) cout << "Pass" << endl;
+   if(n == 0) cout << "Pass";
    if(n == 1) cout << "Injured";
    if(n == 2) cout << "Killed";
+   cout << endl;
 }
 
 bool PresentationController::start_of_the_game(string str) {

@@ -12,7 +12,8 @@ class UserIntellect : public Intellect {
 public:
     vector< vector<int> > user_map_for_user, computer_map_for_user;
     void initialize(vector< vector<int> > &map);
-    void make_turn(vector<vector<int>> &map1, vector<vector<int>> &map);
+    int make_turn(vector<vector<int>> &map1, vector<vector<int>> &map, int size);
+    int answer(pair<int, int> coords, vector<vector<int>> &map);
     UserIntellect();
 };
 

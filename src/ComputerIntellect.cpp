@@ -1,4 +1,5 @@
 #include "../include/ComputerIntellect.h"
+#include "../include/UserIntellect.h"
 #include "../include/PresentationController.h"
 #include "../include/InputController.h"
 
@@ -7,6 +8,31 @@ using namespace std;
 ComputerIntellect::ComputerIntellect() {
     user_map_for_comp.resize(12, vector<int>(12, 0));
     computer_map_for_comp.resize(12, vector<int>(12, 0));
+}
+
+pair<int, int> ComputerIntellect::generate_shoot_coordinates(vector<vector<int>> &map, int size) {
+    vector<pair<int, int>> coordinates;
+    for (int i = 1; i < 11; i++) {
+        for (int j = i % size; j < 11; j += size) {
+            if(j == 0) continue;
+            if(map[i][j] == 0) {
+                coordinates.push_back(make_pair(i, j));
+            }
+        }
+    }
+    return coordinates[random() % coordinates.size()];
+}
+
+int ComputerIntellect::make_turn(vector<vector<int>> &map1, vector<vector<int>> &map, int size) {
+    UserIntellect userIntellect;
+    pair<int, int> cur_coords = generate_shoot_coordinates(map1, size);
+    int ans = userIntellect.answer(cur_coords, map);
+    if(ans == 0) map1[cur_coords.second][cur_coords.first] = 1;
+    else if(ans == 1) map1[cur_coords.second][cur_coords.first] = 2;
+    else {
+        kill_ship(cur_coords, map1);
+    }
+    return ans;
 }
 
 int ComputerIntellect::answer(pair<int, int> coords, vector<vector<int>> &map){
